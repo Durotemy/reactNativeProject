@@ -1,34 +1,36 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-const User = require('../models/UserModel');
-
+const User = require("../models/UserModel");
 
 const protect = async (req, res, next) => {
-    let token;
-    if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-        try {
-            token = req.headers.authorization.split(' ')[1];
-            
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    try {
+      token = req.headers.authorization.split(" ")[1];
 
-            req.header = await User.findById(decoded.id).select('-password');
-            next();
-        } catch (error) {
-            console.log(error);
-            res.status(401).json({
-                success: false,
-                msg: 'Session Expired'
-            })
-        }
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      console.log("decoded", decoded);
+
+      req.header = await User.findById(decoded.id).select("-password");
+      next();
+    } catch (error) {
+      console.log(error);
+      res.status(401).json({
+        success: false,
+        msg: "Session Expired",
+      });
     }
+  }
 
-    if (!token) {
-        res.status(401).json({
-            success: false,
-            msg: 'Not authorized, no token'
-        })
-    }
-}
-
+  if (!token) {
+    res.status(401).json({
+      success: false,
+      msg: "Not authorized, no token",
+    });
+  }
+};
 
 module.exports = protect;

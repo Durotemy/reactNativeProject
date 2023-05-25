@@ -114,8 +114,12 @@ const updateUserProfile = async (req, res) => {
 }
 
 module.exports = {
+    // registerUser,
+    // authUser,
+    // getUserProfile,
+    // updateUserProfile
     registerUser,
     authUser,
     getUserProfile,
-    updateUserProfile
+    updateUserProfile,
 }

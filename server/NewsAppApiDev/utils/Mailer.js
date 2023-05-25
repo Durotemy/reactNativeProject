@@ -7,8 +7,8 @@ var config = {
     host: 'smtp.gmail.com',
     port: 587,
     auth: {
-        user: 'codewithajit925@gmail.com',
-        pass: 'Ajit@123'
+        user: 'durotemy@gmail.com',
+        pass: 'mathematics1..'
     }
 };
 
@@ -16,7 +16,7 @@ var config = {
 var transporter = nodemailer.createTransport(config);
 
 var defaultMail = {
-    from: 'codewithajit925@gmail.com',
+    from: 'durotemy@gmail.com',
     text: 'test1 test'
 }
 
