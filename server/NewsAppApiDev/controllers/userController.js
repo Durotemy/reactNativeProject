@@ -27,7 +27,7 @@ const registerUser = async (req, res, next) => {
             if (err) return next(err);
             res.status(201).json({
                 success: true,
-                msg: 'Account Created Sucessfully. Please log in.'
+                msg: 'Account Created Sucessfully. Please log in now.'
             })
         })
 
